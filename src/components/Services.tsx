@@ -58,15 +58,15 @@ export default function Services() {
           {services.map((service, i) => (
             <motion.div
               key={service.id}
-              initial={{ opacity: 0, clipPath: "inset(0 0 100% 0)", y: -10 }}
-              whileInView={{ opacity: 1, clipPath: "inset(0 0 0% 0)", y: 0 }}
+              initial={{ opacity: 0, height: 0 }}
+              whileInView={{ opacity: 1, height: "auto" }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.7, delay: i * 0.15, ease: [0.16, 1, 0.3, 1] }}
               onMouseEnter={() => setHoveredIndex(i)}
               onMouseLeave={() => setHoveredIndex(null)}
-              className="flex flex-col py-8 md:py-12 border-b border-black/20 group cursor-pointer hover:bg-black/5 transition-colors px-4 -mx-4 rounded-xl"
+              className="flex flex-col border-b border-black/20 group cursor-pointer hover:bg-black/5 transition-colors px-4 -mx-4 rounded-xl overflow-hidden"
             >
-              <div className="flex items-center w-full">
+              <div className="flex items-center w-full py-8 md:py-12">
                 <span className="font-mono text-xl md:text-2xl font-medium w-24 md:w-32">
                   {service.id}
                 </span>
@@ -80,7 +80,7 @@ export default function Services() {
                 animate={{
                   height: hoveredIndex === i ? "auto" : 0,
                   opacity: hoveredIndex === i ? 1 : 0,
-                  marginTop: hoveredIndex === i ? 16 : 0
+                  marginBottom: hoveredIndex === i ? 32 : 0
                 }}
                 transition={{ duration: 0.3, ease: "easeInOut" }}
                 className="overflow-hidden"
